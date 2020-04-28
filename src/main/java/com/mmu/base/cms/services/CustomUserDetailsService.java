@@ -2,6 +2,7 @@ package com.mmu.base.cms.services;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -36,11 +37,22 @@ public class CustomUserDetailsService implements UserDetailsService {
 		return userRepository.findByUsername(name);
 	}
 
+	public User findUserByEmail(String email) {
+		return userRepository.findByEmail(email);
+	}
+
 	public void saveUser(User user) {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setEnabled(true);
-		UserRole userRole = roleRepository.findByUserRole("ADMIN");
-		user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+		user.setCreatedAt(new Date());
+		if (user.getRoles() == null) {
+			UserRole userRole = roleRepository.findByUserRole("CUSTOMER");
+			user.setRoles(new HashSet<>(Arrays.asList(userRole)));
+		}
+		userRepository.save(user);
+	}
+
+	public void updateUser(User user) {
 		userRepository.save(user);
 	}
 

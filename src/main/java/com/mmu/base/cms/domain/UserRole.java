@@ -1,7 +1,9 @@
 package com.mmu.base.cms.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "userRole")
 public class UserRole {
 	@Id
 	private String id;
@@ -9,6 +11,11 @@ public class UserRole {
 	// true)
 
 	private String userRole;
+
+	public UserRole(String userRole) {
+		super();
+		this.userRole = userRole;
+	}
 
 	public String getId() {
 		return id;

@@ -1,10 +1,13 @@
 package com.mmu.base.cms.domain;
 
+import java.util.Date;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection = "users")
 public class User {
 	@Id
 	private String id;
@@ -12,8 +15,10 @@ public class User {
 	private String username;
 	private String email;
 	private String password;
+	private String phone;
 	private String fullname;
 	private boolean enabled;
+	private Date createdAt;
 	@DBRef
 	private Set<UserRole> roles;
 
@@ -71,6 +76,22 @@ public class User {
 
 	public void setRoles(Set<UserRole> roles) {
 		this.roles = roles;
+	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 }

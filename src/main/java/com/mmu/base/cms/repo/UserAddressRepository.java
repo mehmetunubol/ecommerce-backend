@@ -5,10 +5,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.mmu.base.cms.domain.User;
+import com.mmu.base.cms.domain.UserAddress;
 
 @CrossOrigin
-public interface UserRepository extends MongoRepository<User, String> {
-	User findByUsername(@Param("name") String name);
-
-	User findByEmail(@Param("email") String email);
+public interface UserAddressRepository extends MongoRepository<UserAddress, String> {
+	UserAddress findByUserId(@Param("userId") User user);
 }
