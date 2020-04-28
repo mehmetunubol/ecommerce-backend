@@ -48,7 +48,7 @@ public class StartupListener implements ApplicationListener<ContextRefreshedEven
 		User user = new User();
 		user.setEmail("admin@admin.com");
 		user.setPassword("adminpassword");
-		user.setUsername("admin");
+		user.setUsername("admin@admin.com");
 		user.setFullname("Admin User");
 		user.setCreatedAt(new Date());
 		UserRole userRole = roleRepository.findByUserRole("ADMIN");

@@ -3,6 +3,7 @@ package com.mmu.base.cms.domain;
 import java.util.Date;
 import java.util.Set;
 
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -18,6 +19,7 @@ public class User {
 	private String phone;
 	private String fullname;
 	private boolean enabled;
+	@CreatedDate
 	private Date createdAt;
 	@DBRef
 	private Set<UserRole> roles;
