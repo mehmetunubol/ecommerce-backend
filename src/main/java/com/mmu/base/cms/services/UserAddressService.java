@@ -15,7 +15,7 @@ public class UserAddressService {
 	@Autowired
 	private UserAddressRepository userAddressRepository;
 
-	public UserAddress findUserByUser(User user) {
+	public UserAddress findUserAddressByUser(User user) {
 		return userAddressRepository.findByUserId(user);
 	}
 
@@ -29,7 +29,6 @@ public class UserAddressService {
 	}
 
 	public void delete(UserAddress address) {
-		address.setCreatedAt(new Date());
 		userAddressRepository.delete(address);
 	}
 }
